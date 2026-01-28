@@ -18,6 +18,7 @@
             int firstDayOfWeek = ((int)firstDayOfMonth.DayOfWeek + 6) % 7;//曜日を数値化
 
             var today = DateTime.Today;
+            Border? selectedBorder = null;
 
             for (int i = 0; i < 42; i++)
             {
@@ -25,12 +26,20 @@
                 int row = i / 7;//行数計算
                 int col = i % 7;//列数計算
 
-
                 var border = new Border
                 {
                     Stroke = Colors.LightGray,
                     StrokeThickness = 1
                 };
+
+                TapGestureRecognizer tapGesture = new TapGestureRecognizer();
+                tapGesture.Tapped += (s, e) =>
+                {
+                        border.Background = Colors.Red;
+                };
+
+                border.GestureRecognizers.Add(tapGesture);
+
 
                 if (day >= 1 && day <= daysInMonth)
                 {
