@@ -31,11 +31,30 @@
 
                 if (day >= 1 && day <= daysInMonth)
                 {
-                    border.Content = new Label{
-                        Text = day.ToString(),
-                        HorizontalOptions = LayoutOptions.Center,
-                        VerticalOptions = LayoutOptions.Center
+                    var dayLayout = new VerticalStackLayout()
+                    {
+                        Padding = 4,
+                        Spacing = 2
                     };
+
+                    var dayLabel = new Label()
+                    {
+                        Text = day.ToString(),
+                        FontSize = 14,
+                        HorizontalOptions = LayoutOptions.Start
+                    };
+
+                    var scheduleLabel = new Label()
+                    {
+                        Text = "その日の予定",
+                        FontSize = 12,
+                        VerticalOptions = LayoutOptions.Fill
+                    };
+
+                    dayLayout.Children.Add(dayLabel);
+                    dayLayout.Children.Add(scheduleLabel);
+
+                    border.Content = dayLayout;
                 }
 
                 Grid.SetRow(border, row);

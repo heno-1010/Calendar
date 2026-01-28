@@ -4,7 +4,6 @@
              x:Class="Calendar.MainPage">
 
     <VerticalStackLayout
-            Padding="30,0"
             Spacing="25">
         <Label
                 Text="Calendar"
