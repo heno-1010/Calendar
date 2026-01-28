@@ -2,6 +2,7 @@
 {
     public partial class MainPage : ContentPage
     {
+        Border? selectedBorder = null;
 
         public MainPage()
         {
@@ -18,7 +19,6 @@
             int firstDayOfWeek = ((int)firstDayOfMonth.DayOfWeek + 6) % 7;//曜日を数値化
 
             var today = DateTime.Today;
-            Border? selectedBorder = null;
 
             for (int i = 0; i < 42; i++)
             {
@@ -35,7 +35,14 @@
                 TapGestureRecognizer tapGesture = new TapGestureRecognizer();
                 tapGesture.Tapped += (s, e) =>
                 {
-                        border.Background = Colors.Red;
+                    if(selectedBorder != null)
+                    {
+                        selectedBorder.Background = Colors.Transparent;
+
+                    }
+                    border.Background = Colors.Blue;
+                    selectedBorder = border;
+
                 };
 
                 border.GestureRecognizers.Add(tapGesture);
