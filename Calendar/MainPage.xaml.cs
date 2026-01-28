@@ -17,11 +17,14 @@
             var daysInMonth = DateTime.DaysInMonth(displayYear, displayMonth);//その月の日数
             int firstDayOfWeek = ((int)firstDayOfMonth.DayOfWeek + 6) % 7;//曜日を数値化
 
+            var today = DateTime.Today;
+
             for (int i = 0; i < 42; i++)
             {
                 int day = i - firstDayOfWeek + 1;//日付表示用
                 int row = i / 7;//行数計算
                 int col = i % 7;//列数計算
+
 
                 var border = new Border
                 {
@@ -31,6 +34,11 @@
 
                 if (day >= 1 && day <= daysInMonth)
                 {
+                    if (today.Year == displayYear && today.Month == displayMonth && today.Day == day)
+                    {
+                        border.Stroke = Colors.Blue;
+
+                    }
                     var dayLayout = new VerticalStackLayout()
                     {
                         Padding = 4,
